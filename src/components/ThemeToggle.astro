@@ -1,0 +1,56 @@
+<button
+  id="theme-toggle"
+  class="my-auto inline-flex h-10 w-16 items-center justify-center gap-1 rounded-full border-2 border-black bg-bleu px-2 py-2 text-lg font-bold text-neutral-50 shadow-nb-base transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-nb-sm"
+  aria-pressed="false"
+  aria-label="Enable dark mode"
+>
+  <svg
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    style="vertical-align: -0.125em;"
+    width="1em"
+    height="1em"
+    viewBox="0 0 512 512"
+    ><path
+      fill="currentColor"
+      d="M256 32C132.29 32 32 132.29 32 256s100.29 224 224 224s224-100.29 224-224S379.71 32 256 32ZM128.72 383.28A180 180 0 0 1 256 76v360a178.82 178.82 0 0 1-127.28-52.72Z"
+    ></path></svg
+  >
+</button>
+
+<script is:inline>
+  const themeToggle = document.querySelector("#theme-toggle");
+  const setDark = () => {
+    localStorage.theme = "dark";
+    document.documentElement.classList.add("dark");
+    themeToggle.setAttribute("aria-pressed", "true");
+    themeToggle.setAttribute("aria-label", "Disable dark mode");
+  };
+  const setLight = () => {
+    localStorage.theme = "light";
+    document.documentElement.classList.remove("dark");
+    themeToggle.setAttribute("aria-pressed", "true");
+    themeToggle.setAttribute("aria-label", "Enable dark mode");
+  };
+
+  // On page load
+  if (
+    localStorage.theme === "dark" ||
+    (!("theme" in localStorage) &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    setDark();
+  } else {
+    setLight();
+  }
+
+  // On button click
+  themeToggle.addEventListener("click", () => {
+    theme = localStorage.getItem("theme");
+    if (theme !== "dark") {
+      setDark();
+    } else {
+      setLight();
+    }
+  });
+</script>

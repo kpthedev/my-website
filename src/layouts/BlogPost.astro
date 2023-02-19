@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+type Props = CollectionEntry<"blog">["data"];
+
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body>
+    <Header activeNav="blog" />
+    <main>
+      <div class="nb-block-base">
+        <article>
+          {
+            pubDate && (
+              <time class="font-mono text-lg tracking-tight">
+                {pubDate.toLocaleDateString("en-us", {
+                  year: "numeric",
+                  month: "short",
+                  day: "2-digit",
+                })}
+              </time>
+            )
+          }
+          {
+            updatedDate && (
+              <div>
+                Last updated on
+                <time class="font-mono text-lg">
+                  {updatedDate.toLocaleDateString("en-us", {
+                    year: "numeric",
+                    month: "short",
+                    day: "2-digit",
+                  })}
+                </time>
+              </div>
+            )
+          }
+          <h1 class="text-4xl font-extrabold">{title}</h1>
+          <hr class="my-4" />
+          <slot />
+        </article>
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

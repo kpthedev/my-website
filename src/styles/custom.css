@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply m-auto max-w-4xl bg-stone-200 px-5 text-neutral-900 dark:bg-neutral-900 dark:text-neutral-50 sm:px-8;
+  }
+
+  .nb-block-big {
+    @apply mr-[14px] rounded-md border-2 border-black bg-gray-50 p-5 shadow-nb-xl dark:bg-neutral-800 md:p-8;
+  }
+
+  .nb-block-big a {
+    @apply text-bleu underline-offset-2 hover:underline;
+  }
+
+  .nb-block-base {
+    @apply min-w-full rounded-md border-2 border-black bg-gray-50 p-5 dark:bg-neutral-800 md:p-6;
+  }
+
+  .nb-block-base a {
+    @apply text-bleu underline-offset-2 hover:underline;
+  }
+}

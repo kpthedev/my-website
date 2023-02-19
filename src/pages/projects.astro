@@ -1,0 +1,36 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header activeNav="projects" />
+    <main>
+      <div class="grid gap-x-4 gap-y-8 sm:grid-cols-2">
+        <ProjectCard
+          name="stable-karlo"
+          link="https://github.com/kpthedev/stable-karlo"
+          gh="kpthedev/stable-karlo"
+          tech="Streamlit / Pytorch / Huggingface Diffusers"
+          description="A Streamlit app that combines Karlo text-to-image generations with the Stable-Diffusion v2 upscaler in a simple webUI."
+        />
+        <ProjectCard
+          name="my-website"
+          link="https://github.com/kpthedev/stable-karlo"
+          gh="kpthedev/stable-karlo"
+          tech="Astro / Tailwind / TypeScript"
+          description="My personal website and blog built with Astro and Tailwind."
+        />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

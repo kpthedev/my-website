@@ -1,0 +1,36 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import PostList from "../components/PostList.astro";
+import SocialRow from "../components/SocialRow.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header activeNav="home" />
+    <main>
+      <div class="nb-block-big">
+        <h1 class="pb-4 text-4xl font-bold">Hello, world.</h1>
+        <p class="pb-4 text-lg">
+          Welcome to my modest slice of the internet. I'm
+          <span class="font-bold">K.P.</span> if you were wondering — aspiring data
+          scientist, machine learning fanatic, and Linux enthusiast.
+        </p>
+        <SocialRow />
+      </div>
+      <div class="nb-block-base mt-10">
+        <h1 class="pb-2 text-2xl font-bold underline decoration-2">
+          Recent Posts:
+        </h1>
+        <PostList />
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>

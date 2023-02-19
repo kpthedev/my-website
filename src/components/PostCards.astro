@@ -1,0 +1,35 @@
+---
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<postcards>
+  <section>
+    <ul>
+      {
+        posts.map((post) => (
+          <li class="nb-block-base mb-5">
+            <time
+              class="font-mono text-lg tracking-tight"
+              datetime={post.data.pubDate.toISOString()}
+            >
+              {post.data.pubDate.toLocaleDateString("en-us", {
+                year: "numeric",
+                month: "short",
+                day: "2-digit",
+              })}
+            </time>
+            <p class="block text-3xl font-extrabold">{post.data.title}</p>
+            <p class="block pt-2 text-lg">{post.data.description}</p>
+            <a class="block pt-2 text-lg" href={`/blog/${post.slug}/`}>
+              Read more ➜
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</postcards>
