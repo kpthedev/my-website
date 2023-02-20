@@ -8,9 +8,19 @@ import cloudflare from "@astrojs/cloudflare";
 export default defineConfig({
   site: "https://kpthe.dev",
   markdown: {
-    syntaxHighlight: "prism"
+    syntaxHighlight: "prism",
   },
-  integrations: [mdx(), sitemap(), tailwind()],
+  integrations: [
+    mdx(),
+    sitemap({
+      customPages: [
+        "https://kpthe.dev/",
+        "https://kpthe.dev/blog/",
+        "https://kpthe.dev/projects/",
+      ],
+    }),
+    tailwind(),
+  ],
   output: "server",
-  adapter: cloudflare()
+  adapter: cloudflare(),
 });
